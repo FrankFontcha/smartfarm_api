@@ -39,6 +39,11 @@ export type ResultUserDto = {
     token: string,
 }
 
+export type ResultDeleteUserDto = {
+    status: boolean,
+    message: string,
+}
+
 //////////////////////// POST DATA DTO /////////////////////
 
 export type UserLoginDto = {

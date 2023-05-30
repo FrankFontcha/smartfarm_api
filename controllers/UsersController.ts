@@ -112,10 +112,11 @@ exports.getAll = async (req: Request, res: Response) => { // get all users
 
 exports.getById = (req: Request, res: Response) => { // get user by id
     try {
-        if (!req.params?.id) {
+        if (!req?.params?.id) {
             res.status(400).json({ error: "please provide user id", status: 400 })
         } else {
-            User.findById(req.params?.id).exec((err: MongooseError, datas: ResultUserDto) => {
+            const id = req?.params?.id.toString()
+            User.findById(id).exec((err: MongooseError, datas: ResultUserDto) => {
                 if (err) {
                     res.status(400).json({ error: err.message, status: 400 })
                 } else {

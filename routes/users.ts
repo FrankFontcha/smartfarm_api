@@ -6,7 +6,6 @@ const usersController = require('../controllers/usersController');
 module.exports = function (app: Application, version: string) {
     /*startJsAM
           @tag: Users
-          @name: User login 
           @params: UserLoginDto
           @result: ResultUserLoginDto
     endJsAM*/
@@ -16,7 +15,6 @@ module.exports = function (app: Application, version: string) {
 
     /*startJsAM
           @tag: Users
-          @name: User Registration
           @params: UserRegisterDto
           @result: ResultUserDto
     endJsAM*/
@@ -26,7 +24,6 @@ module.exports = function (app: Application, version: string) {
 
     /*startJsAM 
           @tag: Users
-          @name: User get all users
           @result: ResultUserListDto
           @query: GetAllUserDto
     endJsAM*/
@@ -36,10 +33,17 @@ module.exports = function (app: Application, version: string) {
 
     /*startJsAM
           @tag: Users
-          @name: User get user by id
-          @result: ResultUserRegisterDto
+          @result: ResultUserDto
     endJsAM*/
-    app.get(`/api/v1/users/:id`, function (req: Request, res: Response) {
+    app.get(`/api/v1/user/:id`, function (req: Request, res: Response) {
         return usersController.getById(req, res)
+    });
+
+    /*startJsAM
+          @tag: Users
+          @result: ResultDeleteUserDto
+    endJsAM*/
+    app.delete(`/api/v1/users/:id`, function (req: Request, res: Response) {
+        return usersController.deleteById(req, res)
     });
 }
